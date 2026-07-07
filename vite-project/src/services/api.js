@@ -1,8 +1,11 @@
-export function request(url, options = {}) {
-    return fetch(url, options).then((response) => {
-        if (!response.ok) {
-            throw new Error(`Fetch failed: ${response.status} ${response.statusText}`);
-        }
-        return response.json();
-    });
-}
+
+const miUrlApi = "https://www.themealdb.com/api/json/v1/1/filter.php?a=Chile";
+
+
+request(miUrlApi)
+  .then(data => {
+    console.log("Datos recibidos de la API:", data);
+  })
+  .catch(error => {
+    console.error("Hubo un error al conectar con la API:", error);
+  });
