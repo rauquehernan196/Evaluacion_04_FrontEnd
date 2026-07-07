@@ -1,11 +1,16 @@
 
-const miUrlApi = "https://www.themealdb.com/api/json/v1/1/filter.php?a=Chile";
+
+export const getChileanMeals = () => {
+    const miUrlApi = "https://www.themealdb.com/api/json/v1/1/filter.php?a=Chile";
 
 
-request(miUrlApi)
-  .then(data => {
-    console.log("Datos recibidos de la API:", data);
-  })
-  .catch(error => {
-    console.error("Hubo un error al conectar con la API:", error);
-  });
+    return fetch(miUrlApi)
+        .then(response => {
+ 
+            if (!response.ok) {
+                throw new Error(`Error en la petición: ${response.status}`);
+            }
+            
+            return response.json();
+        });
+};
